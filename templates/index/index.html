@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful List Table with Topbar</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'login.css' %}">-->
+</head>
+
+<body>
+    <div class="topbar">
+        <h1>Your Website Name</h1>
+        <ul>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'doc_create' %}">Dokument Qo'shish</a></li>
+            <li><a href="{% url 'hamkor_create' %}">Hamkor Qo'shish</a></li>
+            <li><a href="{% url 'visa_create' %}">Visa Qo'shish</a></li>
+            {% endif %}
+
+
+            <li><a href="{% url 'login' %}">Login</a></li>
+
+            {% if request.user.isnot_authenticated %}
+            <li><a href="{% url 'user_register' %}">Sign Up</a></li>
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Xujjat nomi</th>
+                    <th>Turistlar soni</th>
+                    <th>Hamkor</th>
+                    <th>Vaqt</th>
+                    <th>Visa turi</th>
+                </tr>
+            </thead>
+            {% for doc in dokument %}
+            <tbody>
+                <tr>
+                    <td data-column="Xujjat nomi">{{ doc.xujjat_nomi }}</td>
+                    <td data-column="Turistlar soni">{{ doc.turistlar_soni }}</td>
+                    <td data-column="Hamkor">{{ doc.hamkor }}</td>
+                    <td data-column="Vaqt">{{ doc.yaratilgan_vaqti }}</td>
+                    <td data-column="Visa turi">{{ doc.visa }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

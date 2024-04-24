@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'test.css' %}">
+</head>
+
+<body>
+
+    <div class="topbar">
+        <h1>Your Website Name</h1>
+        <ul>
+            <li><a href="{% url 'dokumentlist' %}">Bosh Sahifa</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+
+
+            {% if request.user.isnot_authenticated %}
+            <li><a href="{% url 'user_register' %}">Sign Up</a></li>
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+
+
+<style>
+    .profile-container {
+        width: 80%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-container h2 {
+        text-align: center;
+    }
+
+    .profile-info {
+        margin-bottom: 20px;
+    }
+
+    .profile-info label {
+        font-weight: bold;
+    }
+
+    .profile-info p {
+        margin: 5px 0;
+    }
+
+    .profile-info p span {
+        font-weight: normal;
+    }
+</style>
+
+
+<div class="profile-container">
+    <h2>Sizning Profilingiz</h2>
+    <div class="profile-info">
+        <label>Username:</label>
+        <p><span>{{ user.username }}</span></p>
+    </div>
+    <div class="profile-info">
+        <label>Ism:</label>
+        <p><span>{{ user.first_name }}</span></p>
+    </div>
+    <div class="profile-info">
+        <label>Familiya:</label>
+        <p><span>{{ user.last_name }}</span></p>
+    </div>
+    <div class="profile-info">
+        <label>Email:</label>
+        <p><span>{{ user.email }}</span></p>
+    </div>
+    <div class="col-sm-12">
+        <a class="password password1" href="{% url 'password_change' %}">Parolni o'zgartirish</a>
+    </div>
+</div>
+

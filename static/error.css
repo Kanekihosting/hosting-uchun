@@ -1,0 +1,20 @@
+.message {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 940px;
+  background-color: #f9f9f9;
+}
+
+.message-header {
+  background-color: #eee;
+  padding: 8px 10px;
+  border-bottom: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.message-body {
+  padding: 10px;
+}
