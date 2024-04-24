@@ -1,0 +1,17 @@
+.password {
+    text-decoration: none;
+    border: 2px solid blue;
+    background-color: blue;
+    color: white;
+    padding: 3px;
+}
+
+.password:hover {
+    background-color: black;
+    border: 2px solid black;
+}
+
+
+.password2 {
+    margin-left: 10px
+}
